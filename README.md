@@ -15,5 +15,5 @@
 <p>Put data file in .xlsm format in ../report-project-main/data_parser/AnalyzedFiles directory. (You can also use preinstalled file)</p>
 <h3>Third step</h3>
 <p>Initialize driver.py in ../report-project-main directory.</p>
-<h4>Fourth step</h4>
+<h3>Fourth step</h3>
 <p>Get generated report in ../report-project-main/output directory.</p>
