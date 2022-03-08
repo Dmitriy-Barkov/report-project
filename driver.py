@@ -1,5 +1,5 @@
 import os.path
-from PdfReport.parser import data_extraction as de
+from data_parser import data_extraction as de
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
 import os
