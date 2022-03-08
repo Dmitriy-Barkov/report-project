@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Oil Report</title>
+	<meta name="description" content="Oil Report" />
+	<link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body>
+	<header class="header_wrapper">
+		<div class="logo_container">
+			<img class="logo" src="{{assets_dir}}/logo.jpg"></img>
+			<!--<img class="logo" src="../assets/logo.jpg"></img>-->
+			<!--<img class="logo" src="../assets/logo.jpg"></img>-->
+		</div>
+		<div class="comp_descr">
+			ООО "{{Organization_name}}"
+			<br/>{{Address}}
+			<br/>ИНН: {{identification_number}} КПП: {{correcting_number}}
+			<br/>☆ {{URL}}
+			<br/>✉ {{email}} ☎ {{telephone}}
+		</div>
+	</header>
+	<section>
+		<div class="protocol_name">
+			<h2 class="title">Протокол № {{protocol_num}}</h2>
+			<h2 class="descr">
+				хроматографический анализ растворённых газов в трансформаторном масле газов
+			</h2>	
+		</div>
+	</section>
+	<section class="wrapper">
+		<h2>
+			1. Характеристика объекта испытаний
+		</h2>
+		<div class="characteristics">
+			<div>
+				<table class="description1">
+					<tbody>
+						<tr>
+							<td class="left_td">Наименование предприятия</td>
+							<td class="right_td">{{client_name}}</td>
+						</tr>
+						<tr>
+							<td class="left_td">Место установки</td>
+							<td class="right_td">{{substation_name}}</td>
+						</tr>
+						<tr>
+							<td class="left_td">Диспетчерское наименование</td>
+							<td class="right_td">{{equip_name}}</td>
+						</tr>
+						<tr>
+							<td class="left_td">Место отбора</td>
+							<td class="right_td">{{testing_part}}</td>
+						</tr>
+						<tr>
+							<td class="left_td">Тип оборудования</td>
+							<td class="right_td">{{equip_type}}</td>
+						</tr>
+						<tr class="last_row">
+							<td class="left_td">Заводской номер</td>
+							<td class="right_td">{{equip_serial_num}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<table class="description2">
+					<tbody>
+						<tr>
+							<td class="left_td">Тип защиты</td>
+							<td class="right_td">{{def_type}}</td>
+						</tr>
+						<tr>
+							<td class="left_td">Класс напряжения</td>
+							<td class="right_td">{{voltage_class}}</td>
+						</tr>
+						<tr>
+							<td class="left_td">Марка масла</td>
+							<td class="right_td">{{oil_brand}}</td>
+						</tr>
+						<tr>
+							<td class="left_td">Год выпуска</td>
+							<td class="right_td">{{'-' if production_year is float else production_year}}</td>
+						</tr>
+						<tr class="last_row">
+							<td class="left_td">Год ввода в эксплуатацию</td>
+							<td class="right_td">{{setting_year}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+	<section class="wrapper">
+		<div class="conditions">
+			<h2>
+				2. Условия отбора пробы
+			</h2>
+			<table class=""> 
+				<tbody>
+					<tr>
+						<td class="">Причина отбора</td>
+						<td class="adjust_align">{{reason}}</td>
+						<td class="">Температура окр. среды, &#176C</td>
+						<td class="adjust_align">{{atm_temperature}}</td>
+						<td class="">Температура масла пробы, &#176C</td>
+						<td class="adjust_align">{{oil_temperature}}</td>
+					</tr>
+					<tr>
+						<td class="">Дата отбора</td>
+						<td class="adjust_align">{{date}}</td>
+						<td class="">Дата доставки пробы в лабораторию</td>
+						<td class="adjust_align">{{delivery_date}}</td>
+						<td class="">Дата выполнения испытаний</td>
+						<td class="adjust_align">{{test_date}}</td>
+					</tr>
+					<tr>
+						<td class="">Шифр пробы</td>
+						<td class="adjust_align">{{probe_code}}</td>
+						<td colspan="2" class="">Условия проведения испытаний:<br> темп., &#176C/ влажность, % / давл., мм.рт.ст.</td>
+						<td colspan="2" class="adjust_align">{{test_conditions}}</td>
+					</tr>					
+				</tbody>
+			</table>
+			<h3>НД: РД 34.46.303-98</h3>
+		</div>
+
+	</section>
+	<section class="wrapper">
+		<div class="conditions">
+			<h2>
+				3. Испытательное оборудование и средства измерений
+			</h2>
+			<table class="equipment_conditions">
+				<tbody>
+					<tr>
+						<td class="number_cell">№ п/п</td>
+						<td class="">Наименование оборудования</td>
+						<td class="">Тип</td>
+						<td class="">Заводской номер</td>
+						<td class="">Погрешность измерений</td>
+						<td class="">Свидетельство о поверке</td>
+						<td class="">Дата следующей поверки</td>
+					</tr>
+					<tr>
+						<td class="">1</td>
+						<td class="">{{equipment_name}}</td>
+						<td class="">{{type_name}}</td>
+						<td class="">{{serial_num}}</td>
+						<td class="">{{accuracy}}</td>
+						<td class="">{{cert_number}}</td>
+						<td class="">{{next_cert_date}}</td>
+					</tr>					
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<section class="wrapper">
+		<div class="results">
+			<h2>
+				4. Результаты испытаний
+			</h2>
+			<table class=""> 
+				<tbody>
+					<tr>
+						<td rowspan="2" class="">Наименование параметра по НД*</td>
+						<td class="">H2</td>
+						<td class="">CH4</td>
+						<td class="">C2H4</td>
+						<td class="">C2H6</td>
+						<td class="">C2H2</td>
+						<td class="">CO2</td>
+						<td class="">CO</td>
+						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}
+						{% else %}
+							<td class="">N2+O2</td>
+					    {% endif %}
+					</tr>
+					<tr>
+						<td class="">Водород</td>
+						<td class="">Метан</td>
+						<td class="">Этилен</td>
+						<td class="">Этан</td>
+						<td class="">Ацетилен</td>
+						<td class="">Диоксид <br> углерода</td>
+						<td class="">Оксид <br> углерода</td>
+						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}
+						{% else %}
+							<td class="">ОГС</td>
+					    {% endif %}
+					</tr>
+					<tr>
+						<td class="">Значение параметра по НД*, % об.</td>
+						<td class="">{{H2_normative}}</td>
+						<td class="">{{CH4_normative}}</td>
+						<td class="">{{C2H4_normative}}</td>
+						<td class="">{{C2H6_normative}}</td>
+						<td class="">{{C2H2_normative}}</td>
+						<td class="">{{CO2_normative}}</td>
+						<td class="">{{CO_normative}}</td>
+						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}
+						{% else %}
+							<td class="">{{N2_O2_normative}}</td>
+					    {% endif %}
+					</tr>
+					<tr>
+						<td class="">Фактическое значение параметра **, % об.</td>
+						<td class="{{'marked' if 'H2' in mismatches_formula }}">{{H2_value}}</td>
+						<td class="{{'marked' if 'CH4' in mismatches_formula }}">{{CH4_value}}</td>
+						<td class="{{'marked' if 'C2H4' in mismatches_formula }}">{{C2H4_value}}</td>
+						<td class="{{'marked' if 'C2H6' in mismatches_formula }}">{{C2H6_value}}</td>
+						<td class="{{'marked' if 'C2H2' in mismatches_formula }}">{{C2H2_value}}</td>
+						<td class="{{'marked' if 'CO2' in mismatches_formula }}" >{{CO2_value}}</td>
+						<td class="{{'marked' if 'CO' in mismatches_formula}}">{{CO_value}}</td>
+						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}
+						{% else %}
+							<td class="{{'marked' if 'N2_O2' in mismatches_formula}}">{{N2_O2_value}}</td>
+					    {% endif %}
+					</tr>
+				</tbody>
+			</table>
+			{% if N2_O2_value is not float %}
+				<h3>* - СТО 34.01-23.1-001-2017</h3>
+			{% else %}
+				<h3>* - {{normative_doc}}</h3>
+			{% endif %}
+			<h3>** - фактическое значение параметра рассчитано на основании двух параллельных испытаний.</h3>
+<!--			<h3>* - {{normative_doc}}</h3>-->
+<!--			<h3>** - фактическое значение параметра рассчитано на основании двух параллельных испытаний.</h3>-->
+<!--			{% if N2_O2_value is not float %}-->
+<!--				<h3>*** - СТО 34.01-23.1-001-2017</h3>-->
+<!--			{% endif %}-->
+		</div>
+
+	</section>
+	<section class="wrapper">
+		<div class="conclusion">
+			<h2>5. Заключение</h2>
+			{% if voltage_class < 35 %}h
+				<p>Результаты испытаний приведены справочно в связи с отсутствием норм для баков трансформаторов класса напряжения {{voltage_class}} кВ.</p>
+			{% elif mismatches %}
+				<p>Результат испытаний не соответствует требованиям {{normative_doc}} по граничной концентрации {{mismatches}}, {{'растворенного' if mismatches_formula|length == 1 else 'растворенных' }} в трансформаторном масле.</p>
+			{% else %}
+				<p>Результат испытаний соответствует требованиям {{normative_doc}} по граничной концентрации газов, растворенных в трансформаторном масле.</p>
+			{% endif %}
+		</div>
+	</section>
+	<section class="wrapper">
+		<div class="certificate">
+			<h2>6. Аттестат аккредитации испытательной лаборатории</h2>
+			<p>{{accreditation_number}} выдан {{emission_date}}</p>
+			<table class="sign_form"> 
+				<tbody>
+					<tr>
+						<td class="">Протокол проверил</td>
+						<td class="">Должность</td>
+						<td class="">Подпись</td>
+					</tr>
+					<tr>
+						<td class="">Самарцева И.А.</td>
+						<td class="">Генеральный директор</td>
+						<td class=""></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<footer>
+		<p>№ {{protocol_num}}</p>
+	</footer>
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>

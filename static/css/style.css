@@ -1,0 +1,231 @@
+@charset "UTF-8";
+@font-face {
+  font-family: Fira Sans;
+  font-weight: 400;
+  src: url(./font/FiraSans-Regular.otf);
+}
+
+@font-face {
+  font-family: Fira Sans;
+  font-style: italic;
+  font-weight: 400;
+  src: url(./font/FiraSans-Italic.otf);
+}
+
+@font-face {
+  font-family: Fira Sans;
+  font-weight: 300;
+  src: url(./font/FiraSans-Light.otf);
+}
+
+@font-face {
+  font-family: Fira Sans;
+  font-style: italic;
+  font-weight: 300;
+  src: url(FiraSans-LightItalic.otf);
+}
+
+@font-face {
+  font-family: Fira Sans;
+  font-weight: bold;
+  src: url(FiraSans-Bold.otf);
+}
+
+/*@page {
+  size: 210mm 297mm;
+}*/
+
+@page :first {
+  /*background: url(./cover.png) no-repeat center;*/
+  /* background: url("http://localhost:8080/cover.png"); */
+  /*background-size: cover;*/
+  margin: 0;
+}
+
+header {
+  border-bottom: solid 2px #cbd5e0;
+  font-size: 9pt;
+}
+
+body {
+  height:297mm;
+  width:210mm;
+}
+
+body header .wrapper {
+  padding-top: 0;
+}
+
+header .comp_descr {
+  text-align:right;
+  vertical-align: top;
+  font-size: 8pt
+}
+
+.logo {
+  z-index: 100;
+  position: fixed;
+  width: 200px;
+  height: 60px;
+  left: 40px;
+  top: 20px;
+  
+}
+
+html, h2, h3 {
+  color: #393939;
+  font-family: Times New Roman;
+  /*Times New Roman*/
+  font-size: 10pt;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+h2, p {
+  margin: 0px;
+}
+
+h3 {
+  margin-bottom: 0px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+font-size: 10pt;
+}
+
+.protocol_name {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.protocol_name h2 {
+  font-family: Times New Roman;
+  font-weight: 600;
+  text-align: center;
+  /*letter-spacing: 0.5px;*/
+  line-height: 1.1;
+  font-size: 12pt;
+  margin-bottom: 5px;
+}
+
+.protocol_name .descr {
+  margin-top: 3px;
+}
+
+.header_wrapper {
+  padding-right: 14px;
+}
+
+.wrapper {
+  padding: 20px 14px 0 20px;
+}
+
+.wrapper h2 {
+  font-weight: 600;
+  margin-bottom: 0; 
+}
+
+.characteristics td,
+.conditions .equipment_conditions td {
+  padding: 0;
+}
+
+.characteristics {
+    text-align: justify;
+    line-height: 0;
+    /*text-align-last: justify;*/
+}
+
+.characteristics:after {
+  width: 100%;
+  height: 0px;
+  visibility: hidden;
+  overflow: hidden;
+  content: '';
+  display: inline-block;
+}
+
+.characteristics div {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+  /*min-width: 360px;*/
+
+  line-height: normal;
+  font-size: 14px;
+
+}
+
+.characteristics td {
+  border-bottom:  #666 1px solid;
+}
+
+.characteristics .last_row .left_td, 
+.characteristics .last_row .right_td {
+  border-bottom:  none;
+}
+
+.characteristics .left_td {
+  border-right:  #666 1px solid;
+  padding-right: 5px;
+}
+
+.characteristics .right_td {
+  padding-left: 5px;
+}
+
+.characteristics .description2 {
+  float: right;
+  min-width: 300px;
+}
+
+.conditions table, .conditions td,
+.results table, .results td,
+.certificate table, .certificate td {
+  border: #666 1px solid;
+}
+
+.conditions tr .adjust_align,
+.conditions .equipment_conditions td {
+  text-align: center;
+}
+
+.conditions .equipment_conditions td {
+  min-width: 120px;
+}
+
+.conditions h3 {
+  margin-top: 0;
+}
+
+.results h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.sign_form {
+  margin-top: 10px;
+}
+
+footer {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  position: fixed;
+  bottom: 0px;
+  left: 45%;
+}
+
+footer p {
+
+}
+
+.marked {
+  color: red;
+  font-weight: 600;
+}
