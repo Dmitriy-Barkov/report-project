@@ -62,7 +62,6 @@ mismatch_search_list = {
         'CO': 'оксида углерода',
         'N2_O2': 'ОГС',
         'SRG': 'СРГ',
-        'C2O3': 'Паль',
 }
 
 
@@ -96,13 +95,6 @@ def set_notation(dataframe, comparision_columns):
     dataframe[joined_list] = dataframe[joined_list].apply(lambda x: ['%.5f' % i if isinstance(i, float) else i for i in x ])
     return dataframe
 
-def change_data_type(df, column_name):
-    try:
-        part = pd.to_datetime(df[column_name]).dt.strftime('%Y')
-    except:
-        print(f"В колонке {column_name} указаны некорректные данные")
-    else:
-        return part
 
 def reformat_table(df):
 
@@ -118,11 +110,8 @@ def reformat_table(df):
     # Приводим столбцы к формату даты
     df['date'] = pd.to_datetime(df['date']).dt.strftime('%d.%m.%Y')
     df['delivery_date'] = pd.to_datetime(df['delivery_date']).dt.strftime('%d.%m.%Y')
-    # df['production_year'] = pd.to_datetime(df['production_year']).dt.strftime('%Y')
-    df['production_year'] = change_data_type(df, column_name='production_year')
-    df['setting_year'] = change_data_type(df, column_name='setting_year')
-
-    # df['setting_year'] = pd.to_datetime(df['setting_year']).dt.strftime('%Y')
+    df['production_year'] = pd.to_datetime(df['production_year'], errors='coerce', format='%Y').dt.strftime('%Y')
+    df['setting_year'] = pd.to_datetime(df['setting_year'], errors='coerce', format='%Y').dt.strftime('%Y')
     df['test_date'] = pd.to_datetime(df['test_date']).dt.strftime('%d.%m.%Y')
 
     # Приводим колнку к строковому типу
@@ -181,6 +170,6 @@ def find_file(ROOT):
 
 def operate():
     EXCEL_FILE = find_file(ROOT)
-    input_df = pd.read_excel(EXCEL_FILE)
+    input_df = pd.read_excel(EXCEL_FILE, parse_dates=['Год ввода'])
     table = reformat_table(df=input_df)
     return get_value(table)
