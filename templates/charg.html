@@ -171,9 +171,15 @@
 						<td class="">C2H2</td>
 						<td class="">CO2</td>
 						<td class="">CO</td>
-						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}
-						{% else %}
+<!--						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}-->
+<!--						{% else %}-->
+<!--							<td class="">N2+O2</td>-->
+<!--					    {% endif %}-->
+						{% if SRG_value %}
+							<td class="">СРГ</td>
+						{% elif N2_O2_value %}
 							<td class="">N2+O2</td>
+						{% else %}
 					    {% endif %}
 					</tr>
 					<tr>
@@ -184,9 +190,15 @@
 						<td class="">Ацетилен</td>
 						<td class="">Диоксид <br> углерода</td>
 						<td class="">Оксид <br> углерода</td>
-						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}
-						{% else %}
+<!--						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}-->
+<!--						{% else %}-->
+<!--							<td class="">ОГС</td>-->
+<!--					    {% endif %}-->
+						{% if SRG_value %}
+							<td class="">СРГ</td>
+						{% elif N2_O2_value %}
 							<td class="">ОГС</td>
+						{% else %}
 					    {% endif %}
 					</tr>
 					<tr>
@@ -198,9 +210,15 @@
 						<td class="">{{C2H2_normative}}</td>
 						<td class="">{{CO2_normative}}</td>
 						<td class="">{{CO_normative}}</td>
-						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}
-						{% else %}
+<!--						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}-->
+<!--						{% else %}-->
+<!--							<td class="">{{N2_O2_normative}}</td>-->
+<!--					    {% endif %}-->
+						{% if SRG_normative %}
+							<td class="">{{SRG_normative}}</td>
+						{% elif N2_O2_value %}
 							<td class="">{{N2_O2_normative}}</td>
+						{% else %}
 					    {% endif %}
 					</tr>
 					<tr>
@@ -212,15 +230,23 @@
 						<td class="{{'marked' if 'C2H2' in mismatches_formula }}">{{C2H2_value}}</td>
 						<td class="{{'marked' if 'CO2' in mismatches_formula }}" >{{CO2_value}}</td>
 						<td class="{{'marked' if 'CO' in mismatches_formula}}">{{CO_value}}</td>
-						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}
-						{% else %}
+<!--						{% if N2_O2_value is float and 'N2_O2' not in mismatches_formula %}-->
+<!--						{% else %}-->
+<!--							<td class="{{'marked' if 'N2_O2' in mismatches_formula}}">{{N2_O2_value}}</td>-->
+<!--					    {% endif %}-->
+						{% if SRG_value %}
+							<td class="{{'marked' if 'SRG' in mismatches_formula}}">{{SRG_value}}</td>
+						{% elif N2_O2_value %}
 							<td class="{{'marked' if 'N2_O2' in mismatches_formula}}">{{N2_O2_value}}</td>
+						{% else %}
 					    {% endif %}
 					</tr>
 				</tbody>
 			</table>
-			{% if N2_O2_value is not float %}
+			{% if N2_O2_value %}
 				<h3>* - СТО 34.01-23.1-001-2017</h3>
+			{% elif SRG_value %}
+				<h3>* - СТО 34.01-23-003-2019</h3>
 			{% else %}
 				<h3>* - {{normative_doc}}</h3>
 			{% endif %}
@@ -236,10 +262,14 @@
 	<section class="wrapper">
 		<div class="conclusion">
 			<h2>5. Заключение</h2>
-			{% if voltage_class < 35 %}h
+			{% if voltage_class < 35 %}
 				<p>Результаты испытаний приведены справочно в связи с отсутствием норм для баков трансформаторов класса напряжения {{voltage_class}} кВ.</p>
 			{% elif mismatches %}
 				<p>Результат испытаний не соответствует требованиям {{normative_doc}} по граничной концентрации {{mismatches}}, {{'растворенного' if mismatches_formula|length == 1 else 'растворенных' }} в трансформаторном масле.</p>
+			{% elif mismatches and SRG_value %}
+				<p>Результат испытаний не соответствует требованиям СТО 34.01-23-003-2019 по граничной концентрации {{mismatches}}, {{'растворенного' if mismatches_formula|length == 1 else 'растворенных' }} в трансформаторном масле.</p>
+			{% elif SRG_value %}
+				<p>Результат испытаний соответствует требованиям СТО 34.01-23-003-2019 по граничной концентрации газов, растворенных в трансформаторном масле.</p>
 			{% else %}
 				<p>Результат испытаний соответствует требованиям {{normative_doc}} по граничной концентрации газов, растворенных в трансформаторном масле.</p>
 			{% endif %}
